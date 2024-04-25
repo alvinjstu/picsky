@@ -115,6 +115,8 @@ class SkyFilter():
 
             this_dir = os.path.join(self.datadir, img_names[idx])
             img_HD = cv2.imread(this_dir, cv2.IMREAD_COLOR)
+            if img_HD is None:
+                continue
             img_HD = self.cvtcolor_and_resize(img_HD)
 
             if img_HD_prev is None:
@@ -190,5 +192,3 @@ if __name__ == '__main__':
     args = utils.parse_config(config_path)
     sf = SkyFilter(args)
     sf.run()
-
-
